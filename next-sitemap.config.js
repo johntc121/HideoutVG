@@ -1,4 +1,4 @@
-let siteUrl = 'https://hideoutvg.com/';
+let siteUrl = 'https://www.hideoutvg.com/';
 
 module.exports = {
     siteUrl,
