@@ -8,25 +8,22 @@ export async function getStaticProps() {
       accessToken: process.env.CONTENTFUL_ACCESS_KEY,
     });
   
-    const res = await client.getEntries({content_type: 'article'});
-    //const res = await client.getEntries({'metadata.tags.sys.id[all]': 'review'})
-    
+    const res = await client.getEntries({'metadata.tags.sys.id[all]': 'blog'});
+  
     return {
       props: {
-        articles: res.items,
+        blogs: res.items,
       },
       revalidate: 1
     }
   }
 
-export default function Home({articles}) {
+export default function Blog({blogs}) {
     return (
         <div className="article-list">
-            {articles.map(article => (
+            {blogs.map(article => (
                 <ArticleCard key={article.sys.id} article={article}/>
             ))}
         </div>
     )
 }
-
-

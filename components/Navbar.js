@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-export default function Layout({ children }) {
+export default function Navbar({ children }) {
   return (
     <div className="navbar">
         <div className="page-title">

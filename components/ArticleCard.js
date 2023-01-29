@@ -21,7 +21,7 @@ export default function Article({article}) {
                         height={250}  
                     />
                 </div>
-                <div className="content">
+                <div className="article-card-content">
                     <div className="info">
                         <h2 className="title">{title}</h2><br/>
                         <p className="author">{author} <span className="updatedAt">{updatedAt}</span></p><br/>
@@ -45,7 +45,7 @@ export default function Article({article}) {
                             position: relative;
                         }
     
-                        .content {
+                        .article-card-content {
                             display: flex;
                             flex-direction: column;
                             align-content: flex-start;
@@ -88,7 +88,7 @@ export default function Article({article}) {
                                 padding: 20px 20px;    
                             }
 
-                            .content {
+                            .article-card-content {
                                 padding: 15px 15px;
                             }
                             .featured {
@@ -96,11 +96,11 @@ export default function Article({article}) {
                             }
                         }
                         @media only screen and (max-width: 570px) {
-                            article-card {
+                            .article-card {
                                 padding: 15px 15px;     
                             }
 
-                            content {
+                            .article-card-content {
                                 padding: 10px 10px;
                                 line-height: 0.0000000000000000000000000001;
                             }
@@ -119,7 +119,7 @@ export default function Article({article}) {
                                 padding: 10px 10px;    
                             }
 
-                            .content {
+                            .article-card-content {
                                 padding: 5px 5px;
                             }
                         }

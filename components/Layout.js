@@ -47,9 +47,12 @@ export default function Layout({ children }) {
               <Link href="/news">
                 <a className="nav-link">News</a>
               </Link>
-              <Link href="/about">
-                <a className="nav-link">About</a>
+              <Link href="/blog">
+                <a className="nav-link">Blog</a>
               </Link>
+              {/* <Link href="/about">
+                <a className="nav-link">About</a>
+              </Link> */}
             </ul>
             <div className="hamburger" onClick={toggleMenu}>
               < Hamburger isOpen={menuOpen}/>
@@ -64,9 +67,12 @@ export default function Layout({ children }) {
           <Link href="/news">
             <a className="nav-link">News</a>
           </Link>
-          <Link href="/about">
-            <a className="nav-link">About</a>
+          <Link href="/blog">
+            <a className="nav-link">Blog</a>
           </Link>
+          {/* <Link href="/about">
+            <a className="nav-link">About</a>
+          </Link> */}
         </div>
         
         <div className="page-content">

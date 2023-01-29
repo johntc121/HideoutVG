@@ -3,6 +3,7 @@ import Image from 'next/image'
 import React, {useEffect} from 'react'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Skeleton from '../../components/Skeleton'
+import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
@@ -51,6 +52,37 @@ export const getStaticProps = async ({ params }) => {
 
 }
 
+const renderOptions = {
+  renderNode: {
+    
+    [BLOCKS.EMBEDDED_ENTRY]: (node, children) => {
+      // target the contentType of the EMBEDDED_ENTRY to display as you need
+      if (node.data.target.sys.contentType.sys.id === "videoEmbed") {
+        return (
+          <iframe
+            className='embedded-video'
+            src={node.data.target.fields.url}
+            title={node.data.target.fields.title}
+            allowFullScreen={true}
+          />
+        );
+      }
+    },
+
+    [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
+      // render the EMBEDDED_ASSET as you need
+      return (
+        <img
+          className='embedded-asset'
+          src={`https://${node.data.target.fields.file.url}`}
+          height={node.data.target.fields.file.details.image.height}
+          width={node.data.target.fields.file.details.image.width}
+          alt={node.data.target.fields.description}
+        />
+      );
+    },
+  },
+};
 
 export default function ArticleDetails({ article }) {
   const loadComments = () => {
@@ -81,16 +113,19 @@ export default function ArticleDetails({ article }) {
   return (
     <article className="article">
       <section className="banner">
-        <Image 
-          src={`https:${featuredImage.fields.file.url}`}
-          width={featuredImage.fields.file.details.image.width}
-          height={featuredImage.fields.file.details.image.height}
-        />
+        {
+          featuredImage ? <Image 
+            src={`https:${featuredImage.fields.file.url}`}
+            width={featuredImage.fields.file.details.image.width}
+            height={featuredImage.fields.file.details.image.height}
+          /> :
+          <></> 
+      }
         <h2>{title}</h2>
       </section>
 
       <section className="article-content">
-        <article>{documentToReactComponents(articleText)}</article>
+        <article>{documentToReactComponents(articleText, renderOptions)}</article>
       </section>
 
       <div id="disqus_thread"></div>
