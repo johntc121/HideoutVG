@@ -109,7 +109,7 @@ export default function ArticleDetails({ article }) {
     )
   }
   const {featuredImage, title, articleText} = article.fields;
-  console.log(articleText)
+  //console.log(articleText)
   return (
     <article className="article">
       <section className="banner">
