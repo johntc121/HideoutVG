@@ -17,14 +17,14 @@ export default function Article({article}) {
                     <Image 
                         className="thumbnail"
                         src={`https:${thumbnail.fields.file.url}`}
-                        width={500}
-                        height={250}  
+                        width={350}
+                        height={175}  
                     />
                 </div>
                 <div className="article-card-content">
                     <div className="info">
-                        <h2 className="title">{title}</h2><br/>
                         <p className="author">{author} <span className="updatedAt">{updatedAt}</span></p><br/>
+                        <h2 className="title">{title}</h2><br/>
                         <p className="excerpt">{excerpt}</p>
                     </div>
                 </div>
@@ -33,7 +33,7 @@ export default function Article({article}) {
                         .article-card {
                             display: flex;
                             border-bottom: 2px solid lightgray;
-                            padding: 20px 40px;
+                            padding: 20px 0;
                             align-items: center;
                         }
                         .article-card:hover {
@@ -43,6 +43,8 @@ export default function Article({article}) {
                         .featured {
                             max-width: 40%;
                             position: relative;
+                            border-radius: 16px;
+                            overflow:hidden;
                         }
     
                         .article-card-content {
@@ -52,17 +54,22 @@ export default function Article({article}) {
                             justify-content: space-around;
                             align-items: flex-start;
                             padding: 25px 25px;
-                            max-width: 40%;
+                            max-width: 60%;
+                        }
+
+                        .info {
+                            line-height: 1.25rem;
                         }
 
                         .title {
                             display: inline;
                             font-weight: bold;
-                            font-size: 24px;
+                            font-size: 18px;
                         }
                         .updatedAt {
                             display: inline;
                             font-size: 10px;
+                            color: #cdcdcd;
                         }
                         .excerpt {
                             display: inline;
@@ -71,6 +78,7 @@ export default function Article({article}) {
                         .author {
                             display: inline;
                             font-size: 14px;
+
                         }
 
                         @media only screen and (max-width: 1100px) {
@@ -79,6 +87,15 @@ export default function Article({article}) {
                             }
                         }
                         @media only screen and (max-width: 800px) {
+                            .article-card {
+                                flex-direction: column;
+                            }
+                            .featured {
+                                max-width: unset;
+                            }
+                            .article-card-content {
+                                max-width: unset;
+                            }
                             .title {
                                  font-size: 16px
                             }
@@ -90,9 +107,6 @@ export default function Article({article}) {
 
                             .article-card-content {
                                 padding: 15px 15px;
-                            }
-                            .featured {
-                                max-width: 50%;
                             }
                         }
                         @media only screen and (max-width: 570px) {

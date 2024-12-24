@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react'
 import {createClient} from 'contentful';
 import ArticleCard from '../components/ArticleCard';
 
@@ -20,13 +20,39 @@ export async function getStaticProps() {
   }
 
 export default function Home({articles}) {
-    return (
-        <div className="article-list">
-            {articles.map(article => (
+  const [searchValue, setSearchValue] = useState('');
+  const filteredPosts = articles.filter(article => ((article.fields.title.toLowerCase()).includes(searchValue.toLowerCase())));
+  console.log(filteredPosts);
+
+  const postsToDiplay = (searchValue.length > 0) ? filteredPosts : articles
+  return (
+      <>
+        <div className='home-container'>
+          <div className="article-list">
+            <div className='search-container'>
+              <input
+                      aria-label="Search articles"
+                      type="text"
+                      placeholder="Search articles"
+                      onChange={(e) => setSearchValue(e.target.value)}
+                      className="search-bar"
+                  />
+            </div>
+            {!filteredPosts.length && 'No posts found.'}
+            {postsToDiplay.map(article => (
                 <ArticleCard key={article.sys.id} article={article}/>
             ))}
+          </div>
+          <div className="featured-container"></div>
         </div>
-    )
+        <style jsx>{`
+          .home-container {
+            width: 100%;
+            display: flex;
+          }
+        `}</style>
+      </>
+  )
 }
 
 
