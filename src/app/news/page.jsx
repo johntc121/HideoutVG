@@ -23,10 +23,8 @@ export const metadata = {
 
 export default async function NewsPage() {
   const news = await getNews();
-  //const largeNewsSet = [...news, ...news, ...news];
 
   return <ArticleClient articles={news} />;
-  //return <HomeClient2 articles={largeNewsSet} />;
 }
 
 export const revalidate = 60;

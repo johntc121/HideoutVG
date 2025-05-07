@@ -3,7 +3,7 @@
 import React from "react";
 import ArticleCard from "./ArticleCard";
 
-export default function HomeClient({ articles }) {
+export default function ArticleClient({ articles }) {
   const [searchValue, setSearchValue] = React.useState("");
 
   // Get the first article as the featured article
@@ -30,7 +30,7 @@ export default function HomeClient({ articles }) {
             placeholder="Search articles..."
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
-            className="w-full px-4 py-3 text-white bg-gray-900 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-3 text-white bg-card border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
           />
         </div>
 
@@ -52,7 +52,7 @@ export default function HomeClient({ articles }) {
       <div className="space-y-6">
         {/* Featured Article */}
         {featuredArticle && (
-          <div className="bg-gray-900 rounded-xl overflow-hidden shadow-md p-6">
+          <div className="bg-card rounded-xl overflow-hidden shadow-md p-6">
             <h2 className="text-xl font-semibold text-white mb-3">
               Featured Article
             </h2>
@@ -61,7 +61,7 @@ export default function HomeClient({ articles }) {
         )}
 
         {/* Twitter Feed (Placeholder) */}
-        <div className="bg-gray-900 rounded-xl overflow-hidden shadow-md p-6">
+        <div className="bg-card rounded-xl overflow-hidden shadow-md p-6">
           <h2 className="text-xl font-semibold text-white mb-3">
             Latest Tweets
           </h2>
