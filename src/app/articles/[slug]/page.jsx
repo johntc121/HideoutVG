@@ -51,7 +51,6 @@ export default async function ArticlePage({ params: rawParams }) {
   if (!article) return <Skeleton />; // ✅ Loading state if article is not found
 
   const { featuredImage, title, articleText } = article.fields;
-  console.log(articleText);
 
   const renderOptions = {
     renderNode: {

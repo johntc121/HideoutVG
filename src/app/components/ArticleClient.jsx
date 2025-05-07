@@ -1,4 +1,5 @@
 "use client";
+import { TwitterTimelineEmbed } from "react-twitter-embed";
 
 import React from "react";
 import ArticleCard from "./ArticleCard";
@@ -17,7 +18,6 @@ export default function ArticleClient({ articles }) {
   const filteredArticles = nonFeaturedArticles.filter((article) =>
     article.fields.title.toLowerCase().includes(searchValue.toLowerCase())
   );
-  console.log("Articles: ", articles);
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -65,7 +65,20 @@ export default function ArticleClient({ articles }) {
           <h2 className="text-xl font-semibold text-white mb-3">
             Latest Tweets
           </h2>
-          <p className="text-gray-400 text-sm">Embed your Twitter feed here.</p>
+          <div className="overflow-hidden rounded-lg">
+            <TwitterTimelineEmbed
+              sourceType="profile"
+              screenName="HideoutVG"
+              options={{ height: 500, theme: "dark" }}
+              noHeader
+              noFooter
+              noBorders
+              placeholder={
+                <p className="text-gray-500 text-sm">Loading tweets...</p>
+              }
+              onLoad={() => console.log("Twitter feed loaded")}
+            />
+          </div>
         </div>
       </div>
     </div>
