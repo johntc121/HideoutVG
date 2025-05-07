@@ -70,7 +70,7 @@ const Navbar = () => {
       </div>
       {/* Mobile Menu */}
       <div
-        className={`absolute z-40 top-0 left-0 w-full bg-background flex flex-col items-center justify-center space-y-8 py-8 transform transition-transform duration-500 ease-in-out ${
+        className={`absolute z-40 top-0 left-0 w-full bg-mobile-background flex flex-col items-center justify-center space-y-8 py-8 transform transition-transform duration-500 ease-in-out ${
           isOpen ? "translate-y-0" : "-translate-y-full"
         }`}
         style={{ height: "100vh" }}
