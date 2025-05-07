@@ -61,7 +61,7 @@ export default function ArticleClient({ articles }) {
         )}
 
         {/* Twitter Feed (Placeholder) */}
-        <div className="bg-card rounded-xl overflow-hidden shadow-md p-6">
+        {/* <div className="bg-card rounded-xl overflow-hidden shadow-md p-6">
           <h2 className="text-xl font-semibold text-white mb-3">
             Latest Tweets
           </h2>
@@ -79,6 +79,22 @@ export default function ArticleClient({ articles }) {
               onLoad={() => console.log("Twitter feed loaded")}
             />
           </div>
+        </div> */}
+        <div className="bg-card rounded-xl overflow-hidden shadow-md p-6">
+          <h2 className="text-xl font-semibold text-white mb-3">
+            Latest Tweets
+          </h2>
+          <p className="text-gray-400 text-sm mb-3">
+            Follow us on Twitter for daily gaming news and updates.
+          </p>
+          <a
+            href="https://twitter.com/HideoutVG"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-4 py-2 bg-accent/50 text-white rounded hover:bg-accent/90"
+          >
+            Follow @HideoutVG
+          </a>
         </div>
       </div>
     </div>
