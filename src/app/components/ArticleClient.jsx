@@ -1,5 +1,4 @@
 "use client";
-import { TwitterTimelineEmbed } from "react-twitter-embed";
 
 import React from "react";
 import ArticleCard from "./ArticleCard";
