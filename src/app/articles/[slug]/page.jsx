@@ -6,6 +6,7 @@ import "server-only";
 import Skeleton from "../../components/Skeleton";
 import Disqus from "./Disqus";
 import EmbeddedVideo from "./EmbeddedVideo";
+import ConvertKit from "./ConvertKit";
 
 async function getArticle(slug) {
   const client = createClient({
@@ -98,6 +99,7 @@ export default async function ArticlePage({ params: rawParams }) {
           {documentToReactComponents(articleText, renderOptions)}
         </article>
       </section>
+      <ConvertKit />
       <Disqus slug={article.fields.slug} />{" "}
       {/* ✅ Disqus comments & interactivity */}
     </article>
