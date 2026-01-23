@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 240" role="img" aria-label="HideoutVG">
+  <title>HideoutVG Logo</title>
+
+  <!-- D-pad icon -->
+  <g transform="translate(0,40)">
+    <rect x="40" y="0" width="80" height="160" rx="18" ry="18" fill="#2F343A"/>
+    <rect x="0" y="40" width="160" height="80" rx="18" ry="18" fill="#2F343A"/>
+
+    <!-- highlights (use opacity instead of rgba) -->
+    <rect x="52" y="12" width="56" height="136" rx="14" ry="14" fill="#FFFFFF" opacity="0.06"/>
+    <rect x="12" y="52" width="136" height="56" rx="14" ry="14" fill="#FFFFFF" opacity="0.04"/>
+
+    <circle cx="80" cy="80" r="14" fill="#F28C18"/>
+  </g>
+
+  <!-- Wordmark -->
+  <g transform="translate(210,0)">
+    <text x="0" y="150"
+          font-family="Montserrat, Inter, Arial Black, Arial, sans-serif"
+          font-size="110"
+          font-weight="800"
+          letter-spacing="1.5"
+          fill="#2F343A">HIDEOUT</text>
+
+    <text x="610" y="150"
+          font-family="Montserrat, Inter, Arial Black, Arial, sans-serif"
+          font-size="110"
+          font-weight="800"
+          letter-spacing="1.5"
+          fill="#F28C18">VG</text>
+  </g>
+</svg>

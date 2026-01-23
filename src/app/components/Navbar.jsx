@@ -20,11 +20,12 @@ const Navbar = () => {
       <div className="flex justify-between items-center h-24 mx-auto py-4 px-12">
         {/* Logo */}
         <Link href="/" className="">
-          <div className="text-xl font-semibold">
+          {/* <div className="text-xl font-semibold">
             Hideout
             <span className="text-3xl font-extrabold text-accent">VG</span>
-            {/* <Image src="/icon.svg" alt="Tripeak Logo" fill={true} /> */}
-          </div>
+            <Image src="/icon.svg" alt="Tripeak Logo" fill={true} />
+          </div> */}
+          <img src="/logo.svg" alt="HideoutVG Logo" className="h-56 w-56" />
         </Link>
 
         {/* Desktop Menu */}
