@@ -7,6 +7,7 @@ import Skeleton from "../../components/Skeleton";
 import Disqus from "./Disqus";
 import EmbeddedVideo from "./EmbeddedVideo";
 import ConvertKit from "./ConvertKit";
+import { notFound } from "next/navigation";
 
 async function getArticle(slug) {
   const client = createClient({
@@ -22,22 +23,58 @@ async function getArticle(slug) {
   return res.items[0] || null;
 }
 
+export async function generateStaticParams() {
+  const client = createClient({
+    space: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: process.env.CONTENTFUL_ACCESS_KEY,
+  });
+
+  const res = await client.getEntries({
+    content_type: "article",
+    select: ["fields.slug"],
+  });
+
+  return res.items.map((article) => ({
+    slug: article.fields.slug,
+  }));
+}
+
 // ✅ Dynamic SEO Metadata
-export async function generateMetadata({ params: rawParams }) {
-  const params = await rawParams;
-  if (!params || !params.slug) {
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const article = await getArticle(slug);
+
+  if (!article) {
     return {
-      title: "Article Not Found",
-      description: "No description available",
+      title: "Article Not Found | HideoutVG",
+      description: "This article could not be found.",
     };
   }
 
-  const article = await getArticle(params.slug);
+  const { title, description, featuredImage } = article.fields;
+  const imageUrl = featuredImage?.fields?.file?.url
+    ? `https:${featuredImage.fields.file.url}`
+    : null;
+
   return {
-    title: article ? article.fields.title : "Article Not Found",
-    description: article
-      ? article.fields.description
-      : "No description available",
+    title,
+    description,
+    alternates: {
+      canonical: `/articles/${slug}`,
+    },
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      url: `https://www.hideoutvg.com/articles/${slug}`,
+      images: imageUrl ? [{ url: imageUrl }] : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: imageUrl ? [imageUrl] : [],
+    },
   };
 }
 
@@ -49,7 +86,7 @@ export default async function ArticlePage({ params: rawParams }) {
 
   const article = await getArticle(params.slug);
 
-  if (!article) return <Skeleton />; // ✅ Loading state if article is not found
+  if (!article) notFound(); // ✅ Loading state if article is not found
 
   const { featuredImage, title, articleText } = article.fields;
 
@@ -107,4 +144,5 @@ export default async function ArticlePage({ params: rawParams }) {
 }
 
 // 🔥 ISR: Refreshes article every 60 seconds
+export const dynamicParams = true;
 export const revalidate = 60;

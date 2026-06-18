@@ -16,9 +16,12 @@ async function getArticles() {
 }
 
 export const metadata = {
-  title: "HideoutVG - Gaming News & Reviews",
+  title: "Gaming News, Reviews, and Features | HideoutVG",
   description:
-    "Stay updated with the latest gaming news, reviews, and insights from HideoutVG.",
+    "HideoutVG covers gaming news, reviews, features, and opinion pieces across PlayStation, Xbox, Nintendo, PC, and more.",
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default async function Home() {
